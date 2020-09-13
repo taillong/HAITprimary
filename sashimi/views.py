@@ -11,7 +11,8 @@ from tensorflow.keras import regularizers
 
 
 # モデルの復元
-model = load_model("maguro_salmon_katsuo_buri_azi_shape100_81.h5")
+# model = load_model("maguro_salmon_katsuo_buri_azi_shape100_81.h5")
+# model = load_model("/Users/taillong/Documents/programming/python/django/sashimiapp/HAITprimary/sashimi/maguro_salmon_katsuo_buri_azi_shape100_81.h5")
 
 # トップページ（仮）
 def index(request):
@@ -19,6 +20,29 @@ def index(request):
         return render(
             request,
             "sashimi/home.html",
+        )
+
+
+# file入力ページ
+def five(request):
+    if request.method == "GET":
+        return render(
+            request,
+            "sashimi/five.html",
+        )
+
+def shiromi(request):
+    if request.method == "GET":
+        return render(
+            request,
+            "sashimi/shiromi.html",
+        )
+
+def ao(request):
+    if request.method == "GET":
+        return render(
+            request,
+            "sashimi/ao.html",
         )
 
 
@@ -35,11 +59,11 @@ def result(request):
     X.append(data)
     X = np.array(X)
 
-    result = model.predict([X])[0]
+    # result = model.predict([X])[0]
 
 
     return render(
         request,
         "sashimi/result.html",
-        {"file":X}
+        {"file":X.shape}
     )

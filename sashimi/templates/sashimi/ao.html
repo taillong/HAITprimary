@@ -1,0 +1,8 @@
+<h1>青魚</h1>
+<p>ファイルを選択してください:</p>
+<form action="{% url 'result' %}" method='POST' enctype="multipart/form-data">
+    <input type="file" name="file">
+    {% csrf_token %}
+    <button type="submit">Send</button>
+</form>
+<a href="/">TOPページへ</a>
