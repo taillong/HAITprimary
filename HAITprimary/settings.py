@@ -25,7 +25,7 @@ SECRET_KEY = 'z8$dxv9u0@!n4gmw3*w8tj%l6@mc5c(q^5v^jii$--r2uxt!ye'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -56,8 +56,7 @@ ROOT_URLCONF = 'HAITprimary.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
-        # テンプレートの保存場所を変更
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

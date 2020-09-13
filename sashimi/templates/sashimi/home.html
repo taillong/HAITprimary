@@ -1,0 +1,7 @@
+<h1>刺し身識別AI</h1>
+<p>ファイルを選択してください:</p>
+<form action="{% url 'result' %}" method='POST'>
+    <input type="file" name="file">
+    {% csrf_token %}
+    <button type="submit">Send</button>
+</form>
