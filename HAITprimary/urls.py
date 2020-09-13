@@ -19,5 +19,5 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sashimi/', include('sashimi.urls')),   #追加
+    path('sashimi/', include('sashimi.urls')),   #追加   
 ]
