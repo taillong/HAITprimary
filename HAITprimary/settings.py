@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'boostrap4',
-    'widget-tweaks',
+    'bootstrap4',
     'sashimi',
 ]
 
