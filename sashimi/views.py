@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import sys
+from HAITprimary.settings import MODEL_FILE_PATH
 
 # kerasで組むと
 # from keras.models import Sequential, load_model
@@ -11,9 +12,10 @@ import sys
 # import sys
 # from PIL import Image
 # from keras import regularizers
-# AttributeError: '_thread._local' object has no attribute 'value'を消すため
+# # AttributeError: '_thread._local' object has no attribute 'value'を消すため
 # import keras.backend.tensorflow_backend as tb
 # tb._SYMBOLIC_SCOPE.value = True
+# import tensorflow_hub as hub
 
 
 # tensorflowで組むと
@@ -26,6 +28,8 @@ import numpy as np
 import sys
 from PIL import Image
 from tensorflow.keras import regularizers
+import tensorflow_hub as hub
+from tensorflow.keras import layers
 
 
 
@@ -64,17 +68,18 @@ def build_model():
 
     # 最適化の手法を宣言
     opt = tf.keras.optimizers.Adam(lr=0.0001, decay=1e-6)
+    # opt = keras.optimizers.Adam(lr=0.0001, decay=1e-6)
 
     # モデルの最適化を宣言(loss:損失関数、metrics:評価の値(今回は正答数))
     model.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
 
     # モデルのロード
-    model = load_model("/Users/taillong/Documents/programming/python/django/sashimiapp/HAITprimary/sashimi/maguro_salmon_katsuo_buri_azi_shape100_81.h5", custom_objects={'L2':regularizers.l2(0.001)}, compile=False)
+    model = load_model(MODEL_FILE_PATH, custom_objects={'L2':regularizers.l2()})
 
     return model
 
 # ここでエラーが出る
-# model = build_model()
+model = build_model()
 
 # トップページ（仮）
 def index(request):
