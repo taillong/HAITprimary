@@ -95,7 +95,7 @@ def five_result(request):
     X = np.array(X)
     # モデルの復元
     # model = build_model(MODEL_FILE_PATH + "/azi_iwashi_downgraded_shape300_70.h5")
-    # # 予測結果をresultに
+    # # 予測結果を出力
     # result = model.predict([X])[0]
     # predicted = result.argmax()
     # percentage = int(result[predicted] * 100)
@@ -125,7 +125,7 @@ def shiromi_result(request):
     X = np.array(X)
     # モデルの復元
     # model = build_model(MODEL_FILE_PATH + "/azi_iwashi_downgraded_shape300_70.h5")
-    # # 予測結果をresultに
+    # # 予測結果を出力
     # result = model.predict([X])[0]
     # predicted = result.argmax()
     # percentage = int(result[predicted] * 100)
@@ -155,7 +155,7 @@ def ao_result(request):
     X = np.array(X)
     # モデルの復元
     # model = build_model(MODEL_FILE_PATH + "/azi_iwashi_downgraded_shape300_70.h5")
-    # # 予測結果をresultに
+    # # 予測結果を出力
     # result = model.predict([X])[0]
     # predicted = result.argmax()
     # percentage = int(result[predicted] * 100)
