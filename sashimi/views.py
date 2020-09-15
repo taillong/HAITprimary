@@ -175,9 +175,8 @@ def result(request):
 
     # モデルの復元
     model = build_model(MODEL_FILE_PATH + "/azi_iwashi_downgraded_shape300_70.h5")
-
+    # 予測結果をresultに
     result = model.predict([X])[0]
-
 
     return render(
         request,
