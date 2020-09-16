@@ -122,3 +122,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MODEL_FILE_PATH = os.path.join(BASE_DIR, 'ml_models')
+
+# KMP_DUPLICATE_LIB_OK=TRUE
+os.environ['KMP_DUPLICATE_LIB_OK']='TRUE'
