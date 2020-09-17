@@ -1,66 +1,8 @@
-{% extends 'base.html' %}
-{% block content %}
-
-
-<div class="jumbotron" style="margin-bottom:0px">
-    <h1>青魚分類器　<small>~アジ、イワシ~</small></h1>
-
-</div>
-<div class="container-fluid" style="margin-bottom:50px">
-  <div class="row">
-    <div class="col-2.4">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI_Wze1TKppIiZluoavd7WYe1YH4s3-98cag&usqp=CAU" alt="アジ" width="555" height="222">
-    </div>
-    <div class="col-2.4">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRFePMVhcN8OuPaS-e1ItmwiAUv0RkNtQpvHQ&usqp=CAU" alt="イワシ" width="555" height="222">
-    </div>
-  </div>
-</div>
-
-<!--
+<h1>青魚</h1>
 <p>ファイルを選択してください:</p>
-<form action="{% url 'five_result' %}" method='POST' enctype="multipart/form-data">
+<form action="{% url 'ao_result' %}" method='POST' enctype="multipart/form-data">
     <input type="file" name="file">
     {% csrf_token %}
     <button type="submit">Send</button>
 </form>
--->
-
-<form action="{% url 'five_result' %}" method='POST' enctype="multipart/form-data">
-  {% csrf_token %}
-  <div class="form-group">
-      <label for="inputFile">判別したい刺身の画像を入力してください</label>
-      <div class="custom-file">
-        <input type="file" class="custom-file-input" id="inputFile", name="file">
-        <label class="custom-file-label" for="inputFile" data-browse="参照">ファイルを選択(ここにドロップすることもできます)</label>
-      </div>
-
-      <hr/>
-
-      <button type="submit" class="btn btn-primary">分類開始</button>
-  </div>
-</form>
-
 <a href="/">TOPページへ</a>
-
-<script>
-  $('input[id=lefile]').change(function() {
-    $('#photoCover').val($(this).val().replace("C:\\fakepath\\", ""));
-  });
-
-  $(document).on('change', ':file', function() {
-    var input = $(this),
-    numFiles = input.get(0).files ? input.get(0).files.length : 1,
-    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.parent().parent().next(':text').val(label);
-});
-
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
-<script>
-bsCustomFileInput.init();
-</script>
-
-
-{% endblock content %}
