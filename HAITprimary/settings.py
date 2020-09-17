@@ -67,9 +67,7 @@ TEMPLATES = [
             ],
             'builtins':[ 
                'bootstrap4.templatetags.bootstrap4',
-
             ],    
-
         },
     },
 ]
