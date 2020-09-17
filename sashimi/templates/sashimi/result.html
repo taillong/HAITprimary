@@ -1,6 +1,20 @@
-<h1>{{ classifier }}</h1>
-<h1>結果: {{ kind }}</h1>
-<h1>percentage: {{ percentage }} %</h1>
-<h1>test: {{ test }}</h1>
 
-<a href="/">TOPページへ</a>
+{% extends 'app.html' %}
+
+{% block contents %}
+<div class="container">
+<h1>{{ classifier }}</h1>
+    <div class="row">
+        <div class="col-md-9">
+            <h2>
+　　　　　　　　　　Result : {{ kind }}
+　　　　　　　　　　Percentage : {{ percentage }} %
+            </h2>    
+        </div>   
+    </div>
+<a href="/" class="btn btn-success">TOPページへ</a>
+</div>
+{% endblock%}
+
+
+
