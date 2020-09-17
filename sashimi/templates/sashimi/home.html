@@ -1,7 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>刺し身識別AI</h1>
-<a href="/post/five">5種類分類</a>
-<a href="/post/shiromi">白身</a>
-<a href="/post/ao">青魚</a>
+<!-- <div class="visual"> -->
+<div class="bgimg-slider">
+    <div class="home-upper">
+        <h1 class="home-upper__app-title">刺し身識別AI</h1>
+    </div>
+    <div class="home-lower">
+        <ul class="home-lower__buttons">
+            <li class="home-lower__button">
+                <a href="/post/five" class="home-lower__button-link">5種類分類（マグロ, サーモン, カツオ, ぶり, アジ刺し身）</a>
+            </li>
+            <li class="home-lower__button">
+                <a href="/post/shiromi" class="home-lower__button-link">白身</a>
+            </li>
+            <li class="home-lower__button">
+                <a href="/post/ao" class="home-lower__button-link">青魚</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- bgswitcher-script -->
+<script src="../static/sashimi/jquery.bgswitcher.js"></script>
+<script>
+jQuery(function($) {
+  $('.bgimg-slider').bgSwitcher({
+    images: ['../static/sashimi/sashimi.jpg','../static/sashimi/tuna.jpg','../static/sashimi/katuo.jpg','../static/sashimi/iwashi.jpg','../static/sashimi/hirame.jpg','../static/sashimi/aji.jpg'],
+    effect: "drop",
+    easing: "linear",
+    duration: 850,
+    interval:4500,
+  });
+});
+</script>
+<!-- bgswitcher-script-end -->
 {% endblock content %}
