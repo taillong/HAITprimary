@@ -37,8 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap4',
-    'sashimi',
 ]
 
 MIDDLEWARE = [
@@ -65,9 +63,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'builtins':[
-               'bootstrap4.templatetags.bootstrap4',
-            ]
         },
     },
 ]
@@ -123,8 +118,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-MODEL_FILE_PATH = os.path.join(BASE_DIR, 'ml_models')
-
-# KMP_DUPLICATE_LIB_OK=TRUE
-os.environ['KMP_DUPLICATE_LIB_OK']='TRUE'
