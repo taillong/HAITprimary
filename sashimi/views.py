@@ -12,6 +12,16 @@ import keras
 from tensorflow.keras import regularizers
 import tensorflow as tf
 
+# Pillow->opencv変換
+def pil2cv(image):
+    new_image = np.array(image, dtype=np.uint8)
+    if new_image.ndim == 2:  # モノクロ
+        pass
+    elif new_image.shape[2] == 3:  # カラー
+        new_image = new_image[:, :, ::-1]
+    elif new_image.shape[2] == 4:  # 透過
+        new_image = new_image[:, :, [2, 1, 0, 3]]
+    return new_image
 
 # モデルを復元する関数
 def build_model(path):
@@ -84,6 +94,7 @@ def shiromi_result(request):
     file = request.FILES.get("file")
     # 画像を整形
     image = Image.open(file)
+    image = pil2cv(image)
     image = np.asarray(image)
     image = image.astype(np.float32)   
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -106,7 +117,44 @@ def shiromi_result(request):
 
 
     # モデルの復元
-    model = build_model(MODEL_FILE_PATH + "/Hirame_Karei_CNN_1.h5")
+    model = Sequential()
+    model.add(Conv2D(filters=32, input_shape=(250,250,3), kernel_size=(3, 3), strides=(1, 1), padding='same'))
+    model.add(Activation('relu'))
+    model.add(MaxPool2D(pool_size=(2,2)))
+
+
+    model.add(Conv2D(filters=32, kernel_size=(4, 4), strides=(1, 1), padding='same'))
+    model.add(Activation('relu'))
+    model.add(MaxPool2D(pool_size=(2,2)))
+    model.add(Dropout(0.5))
+
+
+    model.add(Conv2D(filters=64, kernel_size=(3, 3), strides=(1, 1), padding='same'))
+    model.add(Activation('relu'))
+    model.add(MaxPool2D(pool_size=(2,2)))
+    model.add(Dropout(0.5))
+
+
+    model.add(Conv2D(filters=64, kernel_size=(3, 3), strides=(1, 1), padding='same'))
+    model.add(Activation('relu'))
+    model.add(MaxPool2D(pool_size=(2,2)))
+    model.add(Dropout(0.25))
+
+    model.add(Flatten())
+    model.add(Dense(512))
+    model.add(Activation('relu'))
+    model.add(Dense(2))
+    model.add(Activation('softmax'))   
+
+    # モデルの最適化を宣言(loss:損失関数、metrics:評価の値(今回は正答数))
+    #opt = keras.optimizers.Adam(lr=0.0001, decay=1e-6)
+
+    model.compile(loss="categorical_crossentropy", optimizer="Adam", metrics=["accuracy"])
+    # モデルのロード
+    # efficientnetを使った時はcustomobjectsを入れないと無理っぽい
+
+
+    model = build_model(MODEL_FILE_PATH + "/Hirame_Karei_CNN.h5")
     # 結果を出力
     result = model.predict([img])[0]
     predicted = result.argmax()

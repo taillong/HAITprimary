@@ -66,8 +66,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'builtins':[ 
-                'bootstrap4.templatetags.bootstrap4',
-            ],
+               'bootstrap4.templatetags.bootstrap4',
+            ],    
         },
     },
 ]
